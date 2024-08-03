@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const Customer = require('../models/customerSchema.js');
 const { createNewToken } = require('../utils/token.js');
 
-const customerRegister = async (req, res) => {
+const customerRegister = async (req, res) => { //async function to register a customer is now fixed
     try {
         const reqBody = req.body;
         const {name, email, password } = reqBody; //defining the required fields
@@ -29,15 +29,14 @@ const customerRegister = async (req, res) => {
             const token = createNewToken(result._id)
 
             result = {
-                ...result,
+                ...result._doc,
                 token: token
             };
 
             res.status(200).send(result);
         }
     } catch (err) {
-        console.log(err);
-        res.status(400).json(err.message);
+        res.status(400).json(err.message); //error handling updated
     }
 };
 
