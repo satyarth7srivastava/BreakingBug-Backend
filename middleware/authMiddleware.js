@@ -8,7 +8,7 @@ const authMiddleware = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.env(token, process.env.SECRET_KEY);
+        const decoded = jwt.env(token, process.env.SECRET_KEY);  
         req.user = decoded;
         next();
     } catch (err) {
