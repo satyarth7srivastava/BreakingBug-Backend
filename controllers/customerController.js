@@ -81,7 +81,7 @@ const getCartDetail = async (req, res) => {//working while cart is empty and whe
     }
 }
 
-const cartUpdate = async (req, res) => {
+const customerUpdate = async (req, res) => {
     try {
 
         let customer = await Customer.findByIdAndUpdate(req.params.id, req.body,
@@ -98,5 +98,5 @@ module.exports = {
     customerRegister,
     customerLogIn,
     getCartDetail,
-    cartUpdate,
+    customerUpdate,
 };
