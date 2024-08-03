@@ -13,14 +13,14 @@ const newOrder = async (req, res) => {
         } = req.body;
 
         const order = await Order.create({
-            buyer,
-            shippingData,
-            orderedProducts,
-            paymentInfo,
+            buyer: buyer,
+            shippingData: shippingData,
+            orderedProducts: orderedProducts,
+            paymentInfo: paymentInfo,
             paidAt: Date.now(),
-            productsQuantity,
-            totalPrice,
-        });
+            productsQuantity: productsQuantity,
+            totalPrice: totalPrice,
+        }); // made changes to the order object sending to the database
 
         return res.send(order);
 
@@ -35,19 +35,19 @@ const getOrderedProductsByCustomer = async (req, res) => {
     try {
         let orders = await Order.find({ buyer: req.params.id });
 
-        
+
         const orderedProducts = orders.reduce((accumulator, order) => {
-            
+
             return accumulator.filter(product => {
                 accumulator.push(...order.orderedProducts);
-                return true; 
+                return true;
             });
         }, []);
-        
+
         if (orderedProducts.length > 0) {
             res.send(orderedProducts);
         } else {
-           
+
             res.send({ message: "No products found. Check the filtering logic." });
         }
     } catch (err) {

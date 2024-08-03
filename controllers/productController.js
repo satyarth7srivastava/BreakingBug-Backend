@@ -78,10 +78,14 @@ const addReview = async (req, res) => {
         const productId = req.params.id;
 
         const product = await Product.findById(productId);
+        // Check if the product exists [Error handling]
+        if(!product) {
+            return res.send({ message: "Product not found" });
+        }
 
         const existingReview = product.reviews.find(review => review.reviewer.toString() === reviewer);
 
-        if (existingReview) {
+        if (existingReview) { 
             return res.send({ message: "You have already submitted a review for this product." });
         }
 
