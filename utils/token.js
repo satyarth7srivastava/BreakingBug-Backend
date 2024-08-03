@@ -6,4 +6,4 @@ const createNewToken = (payload) => {
 
 module.exports = {
     createNewToken
-};  // export the function to be used in other files
+};  // export the function to be used in other files 

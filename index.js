@@ -15,7 +15,7 @@ dotenv.config() //changing the position of this line of code
 const PORT = process.env.PORT || 5000
 
 
-app.use(express.json({ limit: '10mb' }))
+app.use(express.json({ limit: '10mb' })) 
 app.use(cors())
 
 mongoose
