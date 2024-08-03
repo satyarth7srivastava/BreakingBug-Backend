@@ -117,4 +117,4 @@ const orderSchema = new mongoose.Schema(
         },
     });
 
-module.exports = mongoose.model("customer", orderSchema);
+module.exports = mongoose.models.order || mongoose.model("order", orderSchema); // error in exporting the model
