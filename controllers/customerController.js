@@ -4,15 +4,19 @@ const { createNewToken } = require('../utils/token.js');
 
 const customerRegister = async (req, res) => {
     try {
+        const reqBody = req.body;
+        const {name, email, password } = reqBody; //defining the required fields
+
+
         const salt = await bcrypt.genSalt(10);
-        const hashedPass = await bcrypt.hash(req.body.password, salt);
+        const hashedPass = await bcrypt.hash(password, salt);
 
         const customer = new Customer({
             ...req.body,
             password: hashedPass
         });
 
-        const existingcustomerByEmail = await Customer.findOne({ email: req.body.email });
+        const existingcustomerByEmail = await Customer.findOne({ email: email });
 
         if (existingcustomerByEmail) {
             res.send({ message: 'Email already exists' });
