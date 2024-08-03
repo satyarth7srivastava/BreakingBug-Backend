@@ -12,7 +12,7 @@ const customerRegister = async (req, res) => {
         const hashedPass = await bcrypt.hash(password, salt);
 
         const customer = new Customer({
-            ...req.body,
+            ...reqBody,
             password: hashedPass
         });
 
@@ -23,19 +23,21 @@ const customerRegister = async (req, res) => {
         }
         else {
             let result = await customer.save();
+            console.log(result);
             result.password = undefined;
             
             const token = createNewToken(result._id)
 
             result = {
-                ...result._doc,
+                ...result,
                 token: token
             };
 
-            res.send(result);
+            res.status(200).send(result);
         }
     } catch (err) {
-        res.status(500).json(err);
+        console.log(err);
+        res.status(400).json(err.message);
     }
 };
 
