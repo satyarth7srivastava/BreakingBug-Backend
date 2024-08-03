@@ -18,7 +18,7 @@ const sellerSchema = new mongoose.Schema({
         type: String,
         default: "seller"
     },
-    shopName: {
+    shopName: { 
         type: String,
         unique: true,
         required: true
