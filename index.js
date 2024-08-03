@@ -21,7 +21,7 @@ mongoose
     .then(console.log("Connected to MongoDB"))
     .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
 
-//use("/",hello)
+//testing
 
 app.use('/', Routes);
 
