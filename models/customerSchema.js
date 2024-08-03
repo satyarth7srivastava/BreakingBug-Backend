@@ -68,7 +68,7 @@ const customerSchema = mongoose.Schema({
             type: String,
         },
         country: {
-            type: Number,
+            type: String, //change from Number to String
         },
         pinCode: {
             type: Number,
