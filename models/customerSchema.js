@@ -22,10 +22,10 @@ const customerSchema = mongoose.Schema({
     cartDetails: [{
         productName: {
             type: String
-        },
+        }, 
         price: {
             mrp: {
-                type: String
+                type: Number // changed from String to Number
             },
             cost: {
                 type: Number

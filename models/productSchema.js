@@ -35,7 +35,7 @@ const productSchema =  mongoose.Schema(
         },
         quantity: {
             type: Number,
-            default: 45
+            default: 1
         },
         reviews: [
             {
@@ -49,7 +49,7 @@ const productSchema =  mongoose.Schema(
                     type: mongoose.Schema.Types.ObjectId,
                     ref: "CUSTOMERS",
                 },
-                date: {
+                date: { 
                     type: Date,
                     default: dateNow, // changed Text to Date
                 },

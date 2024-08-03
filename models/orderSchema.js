@@ -49,7 +49,7 @@ const orderSchema = new mongoose.Schema(
                 }
             },
             subcategory: {
-                type: mongoose.Schema.Types.ObjectId,
+                type: String, //changed from id to String
             },
             productImage: {
                 type: String
@@ -98,17 +98,17 @@ const orderSchema = new mongoose.Schema(
         shippingPrice: {
             type: Number,
             required: true,
-            default: 0,
+            default: 0, 
         },
         totalPrice: {
             type: Number,
             required: true,
-            default: 20,
+            default: 0,
         },
         orderStatus: {
             type: String,
             required: true,
-            
+            default: "Processing",
         },
         deliveredAt: Date,
         createdAt: {
