@@ -49,7 +49,7 @@ const orderSchema = new mongoose.Schema(
                 }
             },
             subcategory: {
-                type: String, //changed from id to String
+                type: mongoose.Schema.Types.ObjectId,
             },
             productImage: {
                 type: String
@@ -108,7 +108,7 @@ const orderSchema = new mongoose.Schema(
         orderStatus: {
             type: String,
             required: true,
-            default: "Processing",
+            
         },
         deliveredAt: Date,
         createdAt: {
