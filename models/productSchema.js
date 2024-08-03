@@ -61,4 +61,4 @@ const productSchema =  mongoose.Schema(
         },
     }, { timestamps: false});
 
-module.exports = mongoose.model("product", productSchema); // second error in exporting the model
+module.exports = mongoose.models.product || mongoose.model("product", productSchema); // second error in exporting the model
