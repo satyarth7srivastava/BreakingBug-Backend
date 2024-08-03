@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 
+const dateNow = new Date(); // current date
+
 const productSchema =  mongoose.Schema(
     {
         productName: {
@@ -49,7 +51,7 @@ const productSchema =  mongoose.Schema(
                 },
                 date: {
                     type: Date,
-                    default: Text,
+                    default: dateNow, // changed Text to Date
                 },
             },
         ],
