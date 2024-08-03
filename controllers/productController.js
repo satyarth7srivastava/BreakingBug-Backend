@@ -212,6 +212,9 @@ const deleteProductReview = async (req, res) => {
         const productId = req.params.id;
 
         const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).send({ message: "Product not found" });
+        }//error handling if product not found
 
         const updatedReviews = product.reviews.filter(review => review._id != reviewId);
 
@@ -228,6 +231,9 @@ const deleteProductReview = async (req, res) => {
 const deleteAllProductReviews = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).send({ message: "Product not found" });
+        }//error handling if product not found
         product.reviews = [];
 
         const updatedProduct = await product.save();
