@@ -21,6 +21,8 @@ mongoose
     .then(console.log("Connected to MongoDB"))
     .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
 
+//use("/",hello)
+
 app.use('/', Routes);
 
 app.listen(PORT, () => {
