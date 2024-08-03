@@ -7,9 +7,6 @@ const app = express()
 const Routes = require("./routes/route.js")
 
 const PORT = process.env.PORT || 5000
-//first comment by ss
-//second commit by ss
-//trying to sync
 dotenv.config();
 
 app.use(express.json({ limit: '10mb' }))
