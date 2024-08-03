@@ -43,9 +43,9 @@ const customerRegister = async (req, res) => { //async function to register a cu
 const customerLogIn = async (req, res) => {
     if (req.body.email && req.body.password) {
         let customer = await Customer.findOne({ email: req.body.email });
-        if (!customer) {
+        if (customer) { //small change from !customer to customer
             const validated = await bcrypt.compare(req.body.password, customer.password);
-            if (!validated) {
+            if (validated) { //small change from !validated to validated
                 customer.password = undefined;
 
                 const token = createNewToken(customer._id)
@@ -67,17 +67,17 @@ const customerLogIn = async (req, res) => {
     }
 };
 
-const getCartDetail = async (req, res) => {
+const getCartDetail = async (req, res) => {//working while cart is empty and when cart is not empty it is not tested yet
     try {
-        let customer = await Customer.findBy(req.params.id)
+        let customer = await Customer.findById(req.params.id) // change from findOne to findById
         if (customer) {
-            res.get(customer.cartDetails);
+            res.json(customer.cartDetails); //change from send to json
         }
         else {
             res.send({ message: "No customer found" });
         }
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err.message);
     }
 }
 
@@ -90,7 +90,7 @@ const cartUpdate = async (req, res) => {
         return res.send(customer.cartDetails);
 
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err.message);
     }
 }
 
