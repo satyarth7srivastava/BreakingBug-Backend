@@ -20,13 +20,14 @@ const {
     addReview,
     getInterestedCustomers,
     getAddedToCartProducts,
+    searchProduct,
 } = require('../controllers/productController.js');
 
 const {
     customerRegister,
     customerLogIn,
     getCartDetail,
-    cartUpdate
+    customerUpdate
 } = require('../controllers/customerController.js');
 
 const {
@@ -50,7 +51,7 @@ router.get('/getAddedToCartProducts/:id', getAddedToCartProducts);
 router.put('/ProductUpdate/:id', updateProduct);
 router.put('/addReview/:id', addReview);
 
-router.get('/searchProduct/:key', searchProductbyCategory);
+router.get('/searchProduct/:key', searchProduct);//changed from searchProductbyCategory to searchProduct
 router.get('/searchProductbyCategory/:key', searchProductbyCategory);
 router.get('/searchProductbySubCategory/:key', searchProductbyCategory);
 
@@ -63,7 +64,7 @@ router.put ('/deleteAllProductReviews/:id', deleteAllProductReviews);
 router.post('/CustomerRegister', customerRegister);
 router.post('/CustomerLogin', customerLogIn);
 router.get('/getCartDetail/:id', getCartDetail);
-router.put('/CustomerUpdate/:id', cartUpdate);
+router.put('/CustomerUpdate/:id', customerUpdate); //it is customerUpdate not cartUpdate
 
 // Order
 router.post('/newOrder', newOrder);

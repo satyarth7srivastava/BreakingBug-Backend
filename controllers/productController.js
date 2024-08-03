@@ -107,7 +107,7 @@ const addReview = async (req, res) => {
 const searchProduct = async (req, res) => {
     try {
         const key = req.params.key;
-
+        console.log(key);
         let products = await Product.find({
             $or: [
                 { productName: { $regex: key, $options: 'i' } },
